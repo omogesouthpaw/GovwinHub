@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisterDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class RegisterDto {
     email;
@@ -23,38 +24,46 @@ class RegisterDto {
 }
 exports.RegisterDto = RegisterDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'john.doe@example.com' }),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "email", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'SecurePassword123' }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(8),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "password", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'John' }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "firstName", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Doe' }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "lastName", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Acme Inc.' }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "companyName", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: ['12345', '67890'] }),
     (0, class_validator_1.IsArray)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Array)
 ], RegisterDto.prototype, "naicsCodes", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'ABC123' }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "cageCode", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'UEI123456789' }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)

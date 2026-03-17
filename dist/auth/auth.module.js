@@ -9,8 +9,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
+const passport_1 = require("@nestjs/passport");
 const auth_service_1 = require("./auth.service");
 const auth_controller_1 = require("./auth.controller");
+const jwt_strategy_1 = require("./strategies/jwt.strategy");
 const jwt_auth_guard_1 = require("./guards/jwt-auth.guard");
 const roles_guard_1 = require("./guards/roles.guard");
 const user_module_1 = require("../user/user.module");
@@ -21,12 +23,13 @@ exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            passport_1.PassportModule,
             jwt_1.JwtModule.register({}),
             (0, common_1.forwardRef)(() => user_module_1.UserModule),
             (0, common_1.forwardRef)(() => company_module_1.CompanyModule),
         ],
         controllers: [auth_controller_1.AuthController],
-        providers: [auth_service_1.AuthService, jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard],
+        providers: [auth_service_1.AuthService, jwt_strategy_1.JwtStrategy, jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard],
         exports: [auth_service_1.AuthService, jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard, jwt_1.JwtModule],
     })
 ], AuthModule);

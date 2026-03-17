@@ -1,8 +1,6 @@
-import { NestFactory, Reflector } from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { AppModule } from './app.module';
-import { RolesGuard } from './common/guards/roles.guard';
-import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
@@ -17,11 +15,6 @@ async function bootstrap() {
       transform: true,
       transformOptions: { enableImplicitConversion: true },
     }),
-  );
-  const reflector = app.get(Reflector);
-  app.useGlobalGuards(
-    new JwtAuthGuard(reflector),
-    new RolesGuard(reflector),
   );
 
   if (process.env.NODE_ENV !== 'production') {
