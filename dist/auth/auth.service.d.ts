@@ -1,7 +1,7 @@
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { UsersService } from '../user/user.service';
 import { RegisterDto } from './dto/register.dto';
-import { UsersService } from 'src/user/user.service';
 export declare class AuthService {
     private users;
     private jwt;
@@ -18,9 +18,9 @@ export declare class AuthService {
         accessToken: string;
         refreshToken: string;
         user: {
-            id: string;
-            email: string;
-            role: string;
+            id: any;
+            email: any;
+            role: any;
         };
     } | {
         mfaRequired: boolean;
@@ -34,18 +34,18 @@ export declare class AuthService {
         accessToken: string;
         refreshToken: string;
         user: {
-            id: string;
-            email: string;
-            role: string;
+            id: any;
+            email: any;
+            role: any;
         };
     }>;
     refreshTokens(userId: string, refreshToken: string): Promise<{
         accessToken: string;
         refreshToken: string;
         user: {
-            id: string;
-            email: string;
-            role: string;
+            id: any;
+            email: any;
+            role: any;
         };
     }>;
     logout(userId: string): Promise<void>;

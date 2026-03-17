@@ -5,6 +5,6 @@ export declare class CompanyController {
     private readonly companyService;
     constructor(companyService: CompanyService);
     getMyCompany(user: IUser): Promise<import("../interfaces").IOrganization>;
-    updateMyCompany(dto: UpdateCompanyDto, user: IUser): Promise<import("../interfaces").IOrganization | null>;
+    updateMyCompany(dto: UpdateCompanyDto, user: IUser): Promise<import("../interfaces").IOrganization>;
     getCompany(id: string, user: IUser): Promise<import("../interfaces").IOrganization>;
 }

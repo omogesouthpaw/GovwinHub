@@ -1,6 +1,6 @@
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
-import { VerifyMfaDto } from 'src/user/dto/create-user.dto';
+import { VerifyMfaDto } from '../user/dto/create-user.dto';
 export declare class AuthController {
     private auth;
     constructor(auth: AuthService);
@@ -9,9 +9,9 @@ export declare class AuthController {
         accessToken: string;
         refreshToken: string;
         user: {
-            id: string;
-            email: string;
-            role: string;
+            id: any;
+            email: any;
+            role: any;
         };
     } | {
         mfaRequired: boolean;
@@ -25,9 +25,9 @@ export declare class AuthController {
         accessToken: string;
         refreshToken: string;
         user: {
-            id: string;
-            email: string;
-            role: string;
+            id: any;
+            email: any;
+            role: any;
         };
     }>;
     refresh(body: {
@@ -37,9 +37,9 @@ export declare class AuthController {
         accessToken: string;
         refreshToken: string;
         user: {
-            id: string;
-            email: string;
-            role: string;
+            id: any;
+            email: any;
+            role: any;
         };
     }>;
     logout(user: any): Promise<void>;

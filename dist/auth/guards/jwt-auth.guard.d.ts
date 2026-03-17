@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { UsersService } from 'src/user/user.service';
+import { UsersService } from '../../user/user.service';
 export declare class JwtAuthGuard implements CanActivate {
     private readonly jwtService;
     private readonly configService;

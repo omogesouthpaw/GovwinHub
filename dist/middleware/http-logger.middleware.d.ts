@@ -1,7 +1,7 @@
 import { NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { LoggerOptionsInterface } from 'src/logger/interfaces/logger.interface';
-import { LoggerService } from 'src/logger/logger.service';
+import { LoggerOptionsInterface } from '../logger/interfaces/logger.interface';
+import { LoggerService } from '../logger/logger.service';
 export declare class HttpLoggerMiddleware implements NestMiddleware {
     private readonly logger;
     private readonly options;
