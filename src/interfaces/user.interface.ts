@@ -8,10 +8,18 @@ export enum UserRole {
 }
 
 export interface IUser extends BaseEntity {
-  companyId: string;
   userId: string;
+  companyId: string | null;
   email: string;
+  password: string;
+  firstName: string | null;
+  lastName: string | null;
   role: UserRole;
+  isActive: boolean;
+  mfaEnabled: boolean;
+  mfaSecret: string | null;
+  mfaBackupCodes: string[] | null;
+  refreshTokenHash: string | null;
 }
 
 export type CreateUserDto = Omit<IUser, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt' | 'expiredAt'>;

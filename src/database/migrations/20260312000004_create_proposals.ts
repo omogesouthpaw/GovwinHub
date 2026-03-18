@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { addBaseColumns } from './helpers';
+import { addBaseColumns } from '../helpers';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('proposals', (table) => {

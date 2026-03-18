@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Knex } from 'knex';
+import { v4 as uuidv4 } from 'uuid';
 import { KNEX_CONNECTION } from '../database/knex.module';
 import * as bcrypt from 'bcrypt';
 
@@ -36,17 +37,22 @@ export class UsersService {
     password: string;
     firstName: string;
     lastName: string;
-    companyId?: string;
+    orgId?: string;
   }) {
     const passwordHash = await bcrypt.hash(data.password, 10);
-    const [user] = await this.knex('users').insert({
+    const id = uuidv4();
+    await this.knex('users').insert({
+      id,
       email: data.email,
       password: passwordHash,
       first_name: data.firstName,
       last_name: data.lastName,
-      company_id: data.companyId,
-    }).returning(['id', 'email', 'first_name', 'last_name', 'role', 'created_at']);
-    return user;
+      org_id: data.orgId,
+    });
+    return this.knex('users')
+      .select('id', 'email', 'first_name', 'last_name', 'role', 'created_at')
+      .where({ id })
+      .first();
   }
 
   async updateUser(id: string, data: {

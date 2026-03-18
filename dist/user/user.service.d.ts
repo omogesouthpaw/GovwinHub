@@ -11,7 +11,7 @@ export declare class UsersService {
         password: string;
         firstName: string;
         lastName: string;
-        companyId?: string;
+        orgId?: string;
     }): Promise<any>;
     updateUser(id: string, data: {
         email?: string;

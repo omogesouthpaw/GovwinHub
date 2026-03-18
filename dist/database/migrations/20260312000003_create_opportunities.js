@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.up = up;
 exports.down = down;
-const helpers_1 = require("./helpers");
+const helpers_1 = require("../helpers");
 async function up(knex) {
     await knex.schema.createTable('opportunities', (table) => {
         (0, helpers_1.addBaseColumns)(table, knex);
@@ -11,8 +11,8 @@ async function up(knex) {
         table.text('title').notNullable();
         table.text('description').nullable();
         table.string('agency', 255).nullable();
-        table.json('naics_codes').notNullable().defaultTo('[]');
-        table.json('psc_codes').notNullable().defaultTo('[]');
+        table.json('naics_codes').nullable();
+        table.json('psc_codes').nullable();
         table.string('set_aside', 100).nullable();
         table.string('contract_type', 50).nullable();
         table.string('place_of_performance', 255).nullable();

@@ -5,7 +5,8 @@
       "Bash(npm install:*)",
       "Bash(node -e:*)",
       "Bash(npx tsc:*)",
-      "Bash(npx nest build:*)"
+      "Bash(npx nest build:*)",
+      "Bash(npx knex:*)"
     ]
   }
 }

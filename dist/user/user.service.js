@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
 const knex_1 = require("knex");
+const uuid_1 = require("uuid");
 const knex_module_1 = require("../database/knex.module");
 const bcrypt = require("bcrypt");
 let UsersService = class UsersService {
@@ -44,14 +45,19 @@ let UsersService = class UsersService {
     }
     async create(data) {
         const passwordHash = await bcrypt.hash(data.password, 10);
-        const [user] = await this.knex('users').insert({
+        const id = (0, uuid_1.v4)();
+        await this.knex('users').insert({
+            id,
             email: data.email,
             password: passwordHash,
             first_name: data.firstName,
             last_name: data.lastName,
-            company_id: data.companyId,
-        }).returning(['id', 'email', 'first_name', 'last_name', 'role', 'created_at']);
-        return user;
+            org_id: data.orgId,
+        });
+        return this.knex('users')
+            .select('id', 'email', 'first_name', 'last_name', 'role', 'created_at')
+            .where({ id })
+            .first();
     }
     async updateUser(id, data) {
         const updateData = {};

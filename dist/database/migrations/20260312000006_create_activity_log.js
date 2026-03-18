@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.up = up;
 exports.down = down;
-const helpers_1 = require("./helpers");
+const helpers_1 = require("../helpers");
 async function up(knex) {
     await knex.schema.createTable('activity_log', (table) => {
         (0, helpers_1.addBaseColumns)(table, knex);
