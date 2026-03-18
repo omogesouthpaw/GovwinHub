@@ -26,11 +26,16 @@ export class AuthService {
     });
   }
 
-  async validateCredentials(email: string, pass: string) {
+  async getProfile(userId: string) {
+    return this.users.findById(userId);
+  }
+
+  async loginWithCredentials(email: string, password: string) {
     const user = await this.users.findByEmailWithPassword(email);
-    if (!user) return null;
-    const ok = await bcrypt.compare(pass, user.password);
-    return ok ? user : null;
+    if (!user) throw new UnauthorizedException('Invalid email or password');
+    const ok = await bcrypt.compare(password, user.password);
+    if (!ok) throw new UnauthorizedException('Invalid email or password');
+    return this.login(user);
   }
 
   async login(user: { id: string; mfa_enabled: boolean; email: string; role: string }) {

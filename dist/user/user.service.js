@@ -44,12 +44,11 @@ let UsersService = class UsersService {
             .first();
     }
     async create(data) {
-        const passwordHash = await bcrypt.hash(data.password, 10);
         const id = (0, uuid_1.v4)();
         await this.knex('users').insert({
             id,
             email: data.email,
-            password: passwordHash,
+            password: data.password,
             first_name: data.firstName,
             last_name: data.lastName,
             org_id: data.orgId,

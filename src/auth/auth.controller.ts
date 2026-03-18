@@ -1,8 +1,8 @@
-import { Body, Controller, Get, HttpCode, Post, Request, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { Body, Controller, Get, HttpCode, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
+import { LoginDto } from './dto/login.dto';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { VerifyMfaDto } from '../user/dto/create-user.dto';
@@ -20,10 +20,9 @@ export class AuthController {
 
   @Post('login')
   @HttpCode(200)
-  @UseGuards(AuthGuard('local'))
-  @ApiOperation({ summary: 'Login — returns full JWT pair or mfaPendingToken' })
-  login(@Request() req: any) {
-    return this.auth.login(req.user);
+  @ApiOperation({ summary: 'Login with email and password' })
+  login(@Body() dto: LoginDto) {
+    return this.auth.loginWithCredentials(dto.email, dto.password);
   }
 
   @Post('mfa/enroll')
@@ -62,6 +61,6 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   me(@CurrentUser() user: any) {
-    return user;
+    return this.auth.getProfile(user.id);
   }
 }

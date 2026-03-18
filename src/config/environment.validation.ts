@@ -9,7 +9,7 @@ export default Joi.object({
   DB_PASSWORD: Joi.string().allow('').default(''),
   DB_NAME: Joi.string().default('govwinhub'),
   JWT_ACCESS_SECRET: Joi.string().required(),
-  JWT_SECRET: Joi.string().required(),
+  // JWT_SECRET: Joi.string().required(),
   JWT_REFRESH_SECRET: Joi.string().required(),
   JWT_ACCESS_TOKEN_TTL: Joi.number().default(3600),
   JWT_REFRESH_TOKEN_TTL: Joi.number().default(86400),

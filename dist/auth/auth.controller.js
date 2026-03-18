@@ -14,10 +14,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
-const passport_1 = require("@nestjs/passport");
 const swagger_1 = require("@nestjs/swagger");
 const auth_service_1 = require("./auth.service");
 const register_dto_1 = require("./dto/register.dto");
+const login_dto_1 = require("./dto/login.dto");
 const jwt_auth_guard_1 = require("../common/guards/jwt-auth.guard");
 const current_user_decorator_1 = require("./decorators/current-user.decorator");
 const create_user_dto_1 = require("../user/dto/create-user.dto");
@@ -29,8 +29,8 @@ let AuthController = class AuthController {
     register(dto) {
         return this.auth.register(dto);
     }
-    login(req) {
-        return this.auth.login(req.user);
+    login(dto) {
+        return this.auth.loginWithCredentials(dto.email, dto.password);
     }
     enrollMfa(user) {
         return this.auth.enrollMfa(user.id);
@@ -45,7 +45,7 @@ let AuthController = class AuthController {
         return this.auth.logout(user.id);
     }
     me(user) {
-        return user;
+        return this.auth.getProfile(user.id);
     }
 };
 exports.AuthController = AuthController;
@@ -60,11 +60,10 @@ __decorate([
 __decorate([
     (0, common_1.Post)('login'),
     (0, common_1.HttpCode)(200),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('local')),
-    (0, swagger_1.ApiOperation)({ summary: 'Login — returns full JWT pair or mfaPendingToken' }),
-    __param(0, (0, common_1.Request)()),
+    (0, swagger_1.ApiOperation)({ summary: 'Login with email and password' }),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [login_dto_1.LoginDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "login", null);
 __decorate([

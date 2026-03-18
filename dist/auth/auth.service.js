@@ -37,12 +37,17 @@ let AuthService = class AuthService {
             lastName: dto.lastName || '',
         });
     }
-    async validateCredentials(email, pass) {
+    async getProfile(userId) {
+        return this.users.findById(userId);
+    }
+    async loginWithCredentials(email, password) {
         const user = await this.users.findByEmailWithPassword(email);
         if (!user)
-            return null;
-        const ok = await bcrypt.compare(pass, user.password);
-        return ok ? user : null;
+            throw new common_1.UnauthorizedException('Invalid email or password');
+        const ok = await bcrypt.compare(password, user.password);
+        if (!ok)
+            throw new common_1.UnauthorizedException('Invalid email or password');
+        return this.login(user);
     }
     async login(user) {
         if (user.mfa_enabled) {

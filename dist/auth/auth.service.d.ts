@@ -8,7 +8,19 @@ export declare class AuthService {
     private config;
     constructor(users: UsersService, jwt: JwtService, config: ConfigService);
     register(dto: RegisterDto): Promise<any>;
-    validateCredentials(email: string, pass: string): Promise<any>;
+    getProfile(userId: string): Promise<any>;
+    loginWithCredentials(email: string, password: string): Promise<{
+        accessToken: string;
+        refreshToken: string;
+        user: {
+            id: any;
+            email: any;
+            role: any;
+        };
+    } | {
+        mfaRequired: boolean;
+        mfaPendingToken: string;
+    }>;
     login(user: {
         id: string;
         mfa_enabled: boolean;
