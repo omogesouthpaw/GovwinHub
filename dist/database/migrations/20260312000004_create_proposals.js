@@ -13,7 +13,7 @@ async function up(knex) {
         table.string('rfp_file_key', 500).nullable();
         table.json('extracted_requirements').nullable();
         table.json('evaluation_criteria').nullable();
-        table.foreign('org_id').references('id').inTable('organizations');
+        table.foreign('org_id').references('id').inTable('Companys');
         table.foreign('opportunity_id').references('id').inTable('opportunities');
     });
 }

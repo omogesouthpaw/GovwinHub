@@ -30,7 +30,7 @@ let UserController = class UserController {
         return this.userService.findByEmail(email);
     }
     async listOrgUsers(user) {
-        return await this.userService.findByOrganization(user.companyId);
+        return await this.userService.findByCompany(user.companyId);
     }
     async getUser(id, currentUser) {
         const user = await this.userService.findById(id);

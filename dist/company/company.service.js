@@ -18,7 +18,7 @@ const knex_1 = require("knex");
 const database_1 = require("../database");
 const base_repository_1 = require("../database/base.repository");
 let CompanyService = class CompanyService extends base_repository_1.BaseRepository {
-    tableName = 'organizations';
+    tableName = 'Companies';
     constructor(knex) {
         super(knex);
     }
@@ -31,10 +31,10 @@ let CompanyService = class CompanyService extends base_repository_1.BaseReposito
             .whereRaw('JSON_CONTAINS(naics_codes, ?)', [JSON.stringify(code)]);
         return rows.map((row) => (0, base_repository_1.mapToCamelCase)(row));
     }
-    async createOrganization(data) {
-        return this.create(data);
+    async createCompany(data) {
+        return await this.create(data);
     }
-    async updateOrganization(id, data) {
+    async updateCompany(id, data) {
         return this.update(id, data);
     }
 };

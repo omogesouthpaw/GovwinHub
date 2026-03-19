@@ -1,7 +1,8 @@
 import { BaseEntity } from './base.entity';
 
 export interface ProposalEntity extends BaseEntity {
-  orgId: string;
+  companyId: string;
+  userId: string | null;
   opportunityId: string | null;
   title: string | null;
   status: string;
@@ -15,7 +16,8 @@ export interface ProposalEntity extends BaseEntity {
  *
  * Columns:
  *  - id                      VARCHAR(36)   PK
- *  - org_id                  VARCHAR(36)   NOT NULL  FK -> organizations.id
+ *  - org_id                  VARCHAR(36)   NOT NULL  FK -> Companys.id
+ *  - user_id                 VARCHAR(36)   NULL      FK -> users.id
  *  - opportunity_id          VARCHAR(36)   NULL      FK -> opportunities.id
  *  - title                   VARCHAR(255)  NULL
  *  - status                  VARCHAR(20)   NOT NULL  DEFAULT 'draft'
@@ -25,6 +27,7 @@ export interface ProposalEntity extends BaseEntity {
  *  + base columns (created_at, updated_at, deleted_at, expired_at)
  *
  * Foreign Keys:
- *  - org_id         -> organizations.id
+ *  - org_id         -> Companys.id
+ *  - user_id        -> users.id
  *  - opportunity_id -> opportunities.id
  */

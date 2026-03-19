@@ -20,6 +20,7 @@ const auth_module_1 = require("./auth/auth.module");
 const user_module_1 = require("./user/user.module");
 const company_module_1 = require("./company/company.module");
 const opportunities_module_1 = require("./opportunities/opportunities.module");
+const redis_module_1 = require("./redis/redis.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer.apply(http_logger_middleware_1.HttpLoggerMiddleware).forRoutes('*');
@@ -49,6 +50,7 @@ exports.AppModule = AppModule = __decorate([
             user_module_1.UserModule,
             company_module_1.CompanyModule,
             opportunities_module_1.OpportunitiesModule,
+            redis_module_1.RedisModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

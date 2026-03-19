@@ -23,7 +23,7 @@ export class UserController {
   @Get()
   @Roles(UserRole.OWNER, UserRole.ADMIN)
   async listOrgUsers(@CurrentUser() user: IUser) {
-    return await this.userService.findByOrganization(user.companyId);
+    return await this.userService.findByCompany(user.companyId);
   }
 
   @Get(':id')

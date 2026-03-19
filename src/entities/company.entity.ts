@@ -1,6 +1,6 @@
 import { BaseEntity } from './base.entity';
 
-export interface OrganizationEntity extends BaseEntity {
+export interface CompanyEntity extends BaseEntity {
   name: string;
   naicsCodes: string[];
   cageCode: string | null;
@@ -8,7 +8,7 @@ export interface OrganizationEntity extends BaseEntity {
 }
 
 /**
- * Table: organizations
+ * Table: Comapnies
  *
  * Columns:
  *  - id          VARCHAR(36)   PK

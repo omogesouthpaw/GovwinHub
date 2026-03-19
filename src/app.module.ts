@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { CompanyModule } from './company/company.module';
 import { OpportunitiesModule } from './opportunities/opportunities.module';
+import { RedisModule } from './redis/redis.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { OpportunitiesModule } from './opportunities/opportunities.module';
     UserModule,
     CompanyModule,
     OpportunitiesModule,
+    RedisModule,
   ],
   controllers: [AppController],
   providers: [AppService],

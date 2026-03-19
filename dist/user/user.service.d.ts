@@ -21,7 +21,7 @@ export declare class UsersService {
         role?: string;
     }): Promise<any>;
     softDelete(id: string): Promise<void>;
-    findByOrganization(orgId: string): Promise<any[]>;
+    findByCompany(orgId: string): Promise<any[]>;
     saveMfaSecret(id: string, secret: string): Promise<void>;
     enableMfa(id: string): Promise<void>;
     saveRefreshTokenHash(id: string, hash: string): Promise<void>;

@@ -2,7 +2,7 @@ import { Knex } from 'knex';
 import { addBaseColumns } from '../helpers';
 
 export async function up(knex: Knex): Promise<void> {
-  await knex.schema.createTable('organizations', (table) => {
+  await knex.schema.createTable('Companys', (table) => {
     addBaseColumns(table, knex);
     table.string('name', 255).notNullable();
     table.json('naics_codes').nullable();
@@ -12,5 +12,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTableIfExists('organizations');
+  await knex.schema.dropTableIfExists('Companys');
 }

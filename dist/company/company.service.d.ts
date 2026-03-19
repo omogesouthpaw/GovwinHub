@@ -1,11 +1,12 @@
 import { Knex } from 'knex';
 import { BaseRepository } from '../database/base.repository';
-import { IOrganization, CreateOrganizationDto, UpdateOrganizationDto } from '../interfaces';
-export declare class CompanyService extends BaseRepository<IOrganization> {
-    protected readonly tableName = "organizations";
+import { CreateCompanyDto, UpdateCompanyDto } from './dto/company.dto';
+import { ICompany } from 'src/interfaces';
+export declare class CompanyService extends BaseRepository<ICompany> {
+    protected readonly tableName = "Companies";
     constructor(knex: Knex);
-    findByName(name: string): Promise<IOrganization | null>;
-    findByNaicsCode(code: string): Promise<IOrganization[]>;
-    createOrganization(data: CreateOrganizationDto): Promise<IOrganization>;
-    updateOrganization(id: string, data: UpdateOrganizationDto): Promise<IOrganization | null>;
+    findByName(name: string): Promise<ICompany | null>;
+    findByNaicsCode(code: string): Promise<ICompany[]>;
+    createCompany(data: CreateCompanyDto): Promise<ICompany>;
+    updateCompany(id: string, data: UpdateCompanyDto): Promise<ICompany | null>;
 }

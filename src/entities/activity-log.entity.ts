@@ -1,7 +1,7 @@
 import { BaseEntity } from './base.entity';
 
 export interface ActivityLogEntity extends BaseEntity {
-  orgId: string;
+  companyId: string;
   userId: string;
   entityType: string;
   entityId: string;
@@ -14,7 +14,7 @@ export interface ActivityLogEntity extends BaseEntity {
  *
  * Columns:
  *  - id          VARCHAR(36)   PK
- *  - org_id      VARCHAR(36)   NOT NULL  FK -> organizations.id
+ *  - org_id      VARCHAR(36)   NOT NULL  FK -> Companys.id
  *  - user_id     VARCHAR(36)   NOT NULL  FK -> users.id
  *  - entity_type VARCHAR(50)   NOT NULL
  *  - entity_id   VARCHAR(36)   NOT NULL
@@ -26,6 +26,6 @@ export interface ActivityLogEntity extends BaseEntity {
  *  - INDEX (entity_type, entity_id)
  *
  * Foreign Keys:
- *  - org_id  -> organizations.id
+ *  - org_id  -> Companys.id
  *  - user_id -> users.id
  */

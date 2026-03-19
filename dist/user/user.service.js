@@ -76,7 +76,7 @@ let UsersService = class UsersService {
     async softDelete(id) {
         await this.knex('users').where({ id }).update({ is_active: false });
     }
-    async findByOrganization(orgId) {
+    async findByCompany(orgId) {
         return this.knex('users')
             .where({ org_id: orgId, is_active: true })
             .select('id', 'email', 'first_name', 'last_name', 'role', 'created_at');

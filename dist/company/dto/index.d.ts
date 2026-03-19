@@ -1,1 +1,1 @@
-export { UpdateCompanyDto } from './update-company.dto';
+export { UpdateCompanyDto } from './company.dto';

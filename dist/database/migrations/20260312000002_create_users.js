@@ -11,7 +11,7 @@ async function up(knex) {
         table.string('cognito_sub', 255).notNullable().unique();
         table.enum('role', ['owner', 'admin', 'editor', 'viewer']).notNullable().defaultTo('editor');
         table.string('full_name', 255).nullable();
-        table.foreign('org_id').references('id').inTable('organizations');
+        table.foreign('org_id').references('id').inTable('Companys');
     });
 }
 async function down(knex) {

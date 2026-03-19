@@ -10,7 +10,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string('entity_id', 36).notNullable();
     table.string('action', 50).notNullable();
     table.json('metadata').nullable();
-    table.foreign('org_id').references('id').inTable('organizations');
+    table.foreign('org_id').references('id').inTable('Companys');
     table.foreign('user_id').references('id').inTable('users');
     table.index(['entity_type', 'entity_id']);
   });

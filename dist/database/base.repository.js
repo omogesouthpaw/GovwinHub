@@ -70,6 +70,7 @@ class BaseRepository {
     }
     async create(data) {
         const now = new Date();
+        console.log('Creating record in', this.tableName, 'with data:', data);
         const record = mapToSnakeCase({
             id: (0, uuid_1.v4)(),
             ...data,
@@ -77,7 +78,7 @@ class BaseRepository {
             updatedAt: now,
         });
         await this.knex(this.tableName).insert(record);
-        return this.findById(record.id);
+        return await this.findById(record.id);
     }
     async update(id, data) {
         const record = mapToSnakeCase({
@@ -86,7 +87,7 @@ class BaseRepository {
         });
         delete record.id;
         await this.activeQuery().where('id', id).update(record);
-        return this.findById(id);
+        return await this.findById(id);
     }
     async softDelete(id) {
         await this.activeQuery().where('id', id).update({ deleted_at: new Date() });

@@ -21,6 +21,7 @@
     "migrate:rollback": "knex migrate:rollback --knexfile src/database/knexfile.ts"
   },
   "dependencies": {
+    "@nestjs/cache-manager": "^3.1.0",
     "@nestjs/common": "^11.1.16",
     "@nestjs/config": "^4.0.3",
     "@nestjs/core": "^11.1.16",
@@ -29,6 +30,8 @@
     "@nestjs/platform-express": "^11.1.16",
     "@nestjs/swagger": "^11.2.6",
     "bcrypt": "^6.0.0",
+    "cache-manager": "^7.2.8",
+    "cache-manager-redis-yet": "^5.1.5",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
     "dotenv": "^17.2.3",
@@ -38,6 +41,7 @@
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "qrcode": "^1.5.4",
+    "redis": "^5.11.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "source-map-support": "^0.5.21",

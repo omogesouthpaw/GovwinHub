@@ -4,7 +4,7 @@ exports.up = up;
 exports.down = down;
 const helpers_1 = require("../helpers");
 async function up(knex) {
-    await knex.schema.createTable('organizations', (table) => {
+    await knex.schema.createTable('Companys', (table) => {
         (0, helpers_1.addBaseColumns)(table, knex);
         table.string('name', 255).notNullable();
         table.json('naics_codes').nullable();
@@ -13,6 +13,6 @@ async function up(knex) {
     });
 }
 async function down(knex) {
-    await knex.schema.dropTableIfExists('organizations');
+    await knex.schema.dropTableIfExists('Companys');
 }
 //# sourceMappingURL=20260312000001_create_organizations.js.map
