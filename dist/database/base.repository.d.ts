@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { BaseEntity } from '../interfaces';
+import { BaseEntity } from '../common/interfaces';
 export declare function toSnakeCase(str: string): string;
 export declare function toCamelCase(str: string): string;
 export declare function mapToSnakeCase(data: Record<string, any>): Record<string, any>;

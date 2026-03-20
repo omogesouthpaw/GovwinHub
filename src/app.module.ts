@@ -7,10 +7,10 @@ import appConfig from './config/app.config';
 import environmentValidation from './config/environment.validation';
 import { KnexModule } from './database';
 import { LoggerModule } from './logger/logger.module';
-import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
-import { CompanyModule } from './company/company.module';
-import { OpportunitiesModule } from './opportunities/opportunities.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { UserModule } from './modules/user/user.module';
+import { CompanyModule } from './modules/company/company.module';
+import { OpportunitiesModule } from './modules/opportunities/opportunities.module'; 
 
 @Module({
   imports: [

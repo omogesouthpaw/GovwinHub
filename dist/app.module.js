@@ -16,10 +16,10 @@ const app_config_1 = require("./config/app.config");
 const environment_validation_1 = require("./config/environment.validation");
 const database_1 = require("./database");
 const logger_module_1 = require("./logger/logger.module");
-const auth_module_1 = require("./auth/auth.module");
-const user_module_1 = require("./user/user.module");
-const company_module_1 = require("./company/company.module");
-const opportunities_module_1 = require("./opportunities/opportunities.module");
+const auth_module_1 = require("./modules/auth/auth.module");
+const user_module_1 = require("./modules/user/user.module");
+const company_module_1 = require("./modules/company/company.module");
+const opportunities_module_1 = require("./modules/opportunities/opportunities.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer.apply(http_logger_middleware_1.HttpLoggerMiddleware).forRoutes('*');

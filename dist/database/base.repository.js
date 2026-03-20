@@ -12,15 +12,7 @@ function toSnakeCase(str) {
 function toCamelCase(str) {
     return str.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
 }
-const JSON_COLUMNS = new Set([
-    'naics_codes',
-    'psc_codes',
-    'raw_data',
-    'embedding',
-    'extracted_requirements',
-    'evaluation_criteria',
-    'metadata',
-]);
+const JSON_COLUMNS = new Set(['naics_codes', 'psc_codes', 'raw_data', 'embedding', 'extracted_requirements', 'evaluation_criteria', 'metadata']);
 function mapToSnakeCase(data) {
     const result = {};
     for (const [key, value] of Object.entries(data)) {
