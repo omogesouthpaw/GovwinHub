@@ -63,6 +63,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
 
   async create(data: Omit<Partial<T>, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>): Promise<T> {
     const now = new Date();
+    console.log('Creating record in', this.tableName, 'with data:', data);
     const record = mapToSnakeCase({
       id: uuidv4(),
       ...data,
@@ -70,7 +71,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
       updatedAt: now,
     });
     await this.knex(this.tableName).insert(record);
-    return this.findById(record.id);
+    return await this.findById(record.id);
   }
 
   async update(id: string, data: Partial<T>): Promise<T | null> {
@@ -80,7 +81,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
     });
     delete record.id;
     await this.activeQuery().where('id', id).update(record);
-    return this.findById(id);
+    return await this.findById(id);
   }
 
   async softDelete(id: string): Promise<void> {
