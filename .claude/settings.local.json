@@ -6,7 +6,14 @@
       "Bash(node -e:*)",
       "Bash(npx tsc:*)",
       "Bash(npx nest build:*)",
-      "Bash(npx knex:*)"
+      "Bash(npx knex:*)",
+      "Bash(node_modules/.bin/tsc --version)",
+      "Bash(node_modules/.bin/tsc --listFiles)",
+      "Bash(git -C /Users/lakeman/Desktop/Govwinhub ls-files dist)",
+      "Bash(psql -U lakeman -c \"\\\\du\")",
+      "Bash(psql postgres:*)",
+      "Bash(./node_modules/.bin/nest build:*)",
+      "Bash(find /Users/lakeman/Desktop/Govwinhub/src -name redis* -o -name *redis*)"
     ]
   }
 }

@@ -1,9 +1,9 @@
 import { Knex } from 'knex';
 
 export function addBaseColumns(table: Knex.CreateTableBuilder, knex: Knex) {
-  table.string('id', 36).primary();
-  table.datetime('created_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
-  table.datetime('updated_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-  table.datetime('deleted_at').nullable().defaultTo(null);
-  table.datetime('expired_at').nullable().defaultTo(null);
+  table.uuid('id').primary().defaultTo(knex.raw('gen_random_uuid()'));
+  table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
+  table.timestamp('updated_at', { useTz: true }).notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
+  table.timestamp('deleted_at', { useTz: true }).nullable().defaultTo(null);
+  table.timestamp('expired_at', { useTz: true }).nullable().defaultTo(null);
 }

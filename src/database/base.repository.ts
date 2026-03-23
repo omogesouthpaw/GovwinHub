@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 import { v4 as uuidv4 } from 'uuid';
-import { BaseEntity } from '../interfaces';
+import { BaseEntity } from '../common/interfaces';
 
 export function toSnakeCase(str: string): string {
   return str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
@@ -10,15 +10,7 @@ export function toCamelCase(str: string): string {
   return str.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
 }
 
-const JSON_COLUMNS = new Set([
-  'naics_codes',
-  'psc_codes',
-  'raw_data',
-  'embedding',
-  'extracted_requirements',
-  'evaluation_criteria',
-  'metadata',
-]);
+const JSON_COLUMNS = new Set(['naics_codes', 'psc_codes', 'raw_data', 'embedding', 'extracted_requirements', 'evaluation_criteria', 'metadata']);
 
 export function mapToSnakeCase(data: Record<string, any>): Record<string, any> {
   const result: Record<string, any> = {};
@@ -61,7 +53,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
 
   async findById(id: string): Promise<T | null> {
     const row = await this.activeQuery().where('id', id).first();
-    return row ? mapToCamelCase(row) as T : null;
+    return row ? (mapToCamelCase(row) as T) : null;
   }
 
   async findAll(): Promise<T[]> {

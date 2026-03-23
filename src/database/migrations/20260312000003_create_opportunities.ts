@@ -9,8 +9,8 @@ export async function up(knex: Knex): Promise<void> {
     table.text('title').notNullable();
     table.text('description').nullable();
     table.string('agency', 255).nullable();
-    table.json('naics_codes').nullable();
-    table.json('psc_codes').nullable();
+    table.jsonb('naics_codes').nullable();
+    table.jsonb('psc_codes').nullable();
     table.string('set_aside', 100).nullable();
     table.string('contract_type', 50).nullable();
     table.string('place_of_performance', 255).nullable();
@@ -18,8 +18,8 @@ export async function up(knex: Knex): Promise<void> {
     table.datetime('response_date').nullable();
     table.decimal('award_amount', 15, 2).nullable();
     table.text('url').nullable();
-    table.json('raw_data').nullable();
-    table.json('embedding').nullable();
+    table.jsonb('raw_data').nullable();
+    table.jsonb('embedding').nullable();
     table.unique(['source', 'source_id']);
     table.index(['agency']);
     table.index(['response_date']);

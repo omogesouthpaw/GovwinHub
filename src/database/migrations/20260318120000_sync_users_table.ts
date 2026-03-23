@@ -21,13 +21,13 @@ export async function up(knex: Knex): Promise<void> {
     table.boolean('is_active').notNullable().defaultTo(true);
     table.boolean('mfa_enabled').notNullable().defaultTo(false);
     table.string('mfa_secret', 255).nullable();
-    table.json('mfa_backup_codes').nullable();
+    table.jsonb('mfa_backup_codes').nullable();
     table.text('refresh_token_hash').nullable();
   });
 
   // Make org_id nullable (users can register without an org)
   await knex.schema.alterTable('users', (table) => {
-    table.string('org_id', 36).nullable().alter();
+    table.uuid('org_id').nullable().alter();
   });
 
   // Drop legacy columns no longer referenced in code
@@ -49,7 +49,7 @@ export async function down(knex: Knex): Promise<void> {
 
   // Make org_id required again
   await knex.schema.alterTable('users', (table) => {
-    table.string('org_id', 36).notNullable().alter();
+    table.uuid('org_id').notNullable().alter();
   });
 
   // Drop new columns
