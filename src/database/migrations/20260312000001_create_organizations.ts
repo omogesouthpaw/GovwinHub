@@ -5,7 +5,7 @@ export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('organizations', (table) => {
     addBaseColumns(table, knex);
     table.string('name', 255).notNullable();
-    table.json('naics_codes').nullable();
+    table.jsonb('naics_codes').nullable();
     table.string('cage_code', 10).nullable();
     table.string('uei', 20).nullable();
   });

@@ -10,14 +10,13 @@ export interface KnexConnectionOptions {
 
 export function createKnexInstance(options: KnexConnectionOptions): Knex {
   return knex({
-    client: 'mysql2',
+    client: 'pg',
     connection: {
       host: options.host,
       port: options.port,
       user: options.user,
       password: options.password,
       database: options.database,
-      charset: 'utf8mb4',
     },
     pool: {
       min: 2,

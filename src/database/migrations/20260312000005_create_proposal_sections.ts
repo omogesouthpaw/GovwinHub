@@ -4,7 +4,7 @@ import { addBaseColumns } from '../helpers';
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('proposal_sections', (table) => {
     addBaseColumns(table, knex);
-    table.string('proposal_id', 36).notNullable();
+    table.uuid('proposal_id').notNullable();
     table.string('section_type', 50).notNullable();
     table.string('title', 255).nullable();
     table.text('content').nullable();

@@ -1,15 +1,16 @@
-import 'dotenv/config';
+import * as dotenv from 'dotenv';
 import * as path from 'path';
 
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+
 const baseConfig = {
-  client: 'mysql2',
+  client: 'pg',
   connection: {
     host: process.env.DB_HOST || 'localhost',
-    port: Number(process.env.DB_PORT) || 3306,
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'govwinhub',
-    charset: 'utf8mb4',
+    port: Number(process.env.DB_PORT) || 5432,
+    user: process.env.DB_USER || 'govcon',
+    password: process.env.DB_PASSWORD || 'govcon',
+    database: process.env.DB_NAME || 'govcon',
   },
   migrations: {
     directory: path.resolve(__dirname, 'migrations'),
