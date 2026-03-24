@@ -1,13 +1,14 @@
 import * as Joi from 'joi';
 
 export default Joi.object({
-  NODE_ENV: Joi.string().valid('development', 'production', 'test', 'staging').default('development'),
+  NODE_ENV: Joi.string().valid('local', 'development', 'production', 'test', 'staging').default('development'),
   PORT: Joi.number().port().default(3000),
   DB_HOST: Joi.string().default('localhost'),
-  DB_PORT: Joi.number().default(3306),
-  DB_USER: Joi.string().default('root'),
+  DB_PORT: Joi.number().default(5432),
+  DB_USER: Joi.string().default('govcon'),
   DB_PASSWORD: Joi.string().allow('').default(''),
-  DB_NAME: Joi.string().default('govwinhub'),
+  DB_NAME: Joi.string().default('govcon'),
+  DB_SSL: Joi.boolean().truthy('true').falsy('false').default(false),
   JWT_ACCESS_SECRET: Joi.string().required(),
   // JWT_SECRET: Joi.string().required(),
   JWT_REFRESH_SECRET: Joi.string().required(),

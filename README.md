@@ -1,11 +1,11 @@
 # GovWinHub
 
-GovCon Platform API built with NestJS, Knex, and MySQL.
+GovCon Platform API built with NestJS, Knex, and PostgreSQL.
 
 ## Prerequisites
 
-- Node.js v20 (see `.nvmrc`)
-- MySQL 8.x
+- Node.js v20 (see `.nvmrc`) — use `nvm use` to switch automatically
+- PostgreSQL 16
 - npm
 
 ## Setup
@@ -18,33 +18,57 @@ npm install
 
 2. **Configure environment variables**
 
-Copy the example and update values as needed:
+This project uses separate `.env` files per environment, loaded automatically based on `NODE_ENV`.
+
+| `NODE_ENV` value | File loaded        | Use case            |
+|------------------|--------------------|---------------------|
+| `development`    | `.env.development` | Development (default) |
+| `production`     | `.env.production`  | Production          |
+| `test`           | `.env.test`        | Testing             |
+
+**To get started**, copy the example file and fill in your values:
 
 ```bash
-cp .env.example .env
+cp .env.example .env.development
 ```
 
-Required variables:
+> `.env.example` is committed to git with all required keys but no values. All other `.env.*` files are gitignored — never commit real credentials.
 
-| Variable              | Description                  | Default                  |
-| --------------------- | ---------------------------- | ------------------------ |
-| `PORT`                | Server port                  | `3000`                   |
-| `NODE_ENV`            | Environment                  | `development`            |
-| `DB_HOST`             | MySQL host                   | `localhost`              |
-| `DB_PORT`             | MySQL port                   | `3306`                   |
-| `DB_USER`             | MySQL user                   | `root`                   |
-| `DB_PASSWORD`         | MySQL password               |                          |
-| `DB_NAME`             | MySQL database name          | `govwinhub`              |
-| `JWT_ACCESS_SECRET`   | Secret for access tokens     | **required**             |
-| `JWT_SECRET`          | General JWT secret           | **required**             |
-| `JWT_REFRESH_SECRET`  | Secret for refresh tokens    | **required**             |
-| `JWT_ACCESS_TOKEN_TTL`| Access token TTL (seconds)   | `3600`                   |
-| `JWT_REFRESH_TOKEN_TTL`| Refresh token TTL (seconds) | `86400`                  |
+**Switching between local and cloud DB:**
 
-3. **Create the database**
+Inside `.env.development`, two DB blocks are provided — one for local PostgreSQL, one for Neon (cloud). Comment out the one you are not using:
+
+```env
+# Local PostgreSQL — uncomment to use
+# DB_HOST=localhost
+# ...
+
+# Neon (cloud dev)
+DB_HOST=your-neon-host
+# ...
+```
+
+**Required variables:**
+
+| Variable | Description |
+|----------|-------------|
+| `PORT` | Server port |
+| `NODE_ENV` | Environment (`development`, `production`, `test`) |
+| `DB_HOST` | PostgreSQL host |
+| `DB_PORT` | PostgreSQL port |
+| `DB_USER` | PostgreSQL user |
+| `DB_PASSWORD` | PostgreSQL password |
+| `DB_NAME` | PostgreSQL database name |
+| `DB_SSL` | Enable SSL (`true` for cloud DBs, `false` for local) |
+| `JWT_ACCESS_SECRET` | Secret for access tokens |
+| `JWT_REFRESH_SECRET` | Secret for refresh tokens |
+| `JWT_ACCESS_TOKEN_TTL` | Access token TTL in seconds |
+| `JWT_REFRESH_TOKEN_TTL` | Refresh token TTL in seconds |
+
+3. **Run the app**
 
 ```bash
-mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS \`govcon-application\`;"
+npm run start:dev
 ```
 
 ## Database Migrations

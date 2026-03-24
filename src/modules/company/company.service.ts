@@ -13,7 +13,7 @@ import { ICompany } from 'src/common/interfaces/company.interface';
 
 @Injectable()
 export class CompanyService extends BaseRepository<ICompany> {
-  protected readonly tableName = 'Companies';
+  protected readonly tableName = 'organizations';
 
   constructor(@Inject(KNEX_CONNECTION) knex: Knex) {
     super(knex);

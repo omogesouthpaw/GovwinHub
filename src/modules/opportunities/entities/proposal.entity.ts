@@ -16,7 +16,7 @@ export interface ProposalEntity extends BaseEntity {
  *
  * Columns:
  *  - id                      VARCHAR(36)   PK
- *  - org_id                  VARCHAR(36)   NOT NULL  FK -> Companys.id
+ *  - org_id                  VARCHAR(36)   NOT NULL  FK -> organizations.id
  *  - user_id                 VARCHAR(36)   NULL      FK -> users.id
  *  - opportunity_id          VARCHAR(36)   NULL      FK -> opportunities.id
  *  - title                   VARCHAR(255)  NULL
@@ -27,7 +27,7 @@ export interface ProposalEntity extends BaseEntity {
  *  + base columns (created_at, updated_at, deleted_at, expired_at)
  *
  * Foreign Keys:
- *  - org_id         -> Companys.id
+ *  - org_id         -> organizations.id
  *  - user_id        -> users.id
  *  - opportunity_id -> opportunities.id
  */
