@@ -22,15 +22,14 @@ async function bootstrap() {
     }),
   );
 
-  if (process.env.NODE_ENV !== 'production') {
-    const doc = new DocumentBuilder()
-      .setTitle('GovCon Platform API')
-      .setDescription('Core Backend')
-      .setVersion('1.0')
-      .addBearerAuth()
-      .build();
-    SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app, doc));
-  }
+  const appUrl = process.env.APP_URL || `http://localhost:${process.env.PORT ?? 3000}`;
+  const docBuilder = new DocumentBuilder()
+    .setTitle('GovWinHub API')
+    .setDescription('GovWinHub Backend — AI-Powered Government Contract Management Platform')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .addServer(appUrl);
+  SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app, docBuilder.build()));
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
