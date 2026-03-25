@@ -1,7 +1,12 @@
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
-dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+const env = process.env.NODE_ENV || 'development';
+if (env !== 'production') {
+  dotenv.config({ path: path.resolve(__dirname, `../../.env.${env}`) });
+}
+
+const ssl = process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false;
 
 const baseConfig = {
   client: 'pg',
@@ -9,8 +14,9 @@ const baseConfig = {
     host: process.env.DB_HOST || 'localhost',
     port: Number(process.env.DB_PORT) || 5432,
     user: process.env.DB_USER || 'govcon',
-    password: process.env.DB_PASSWORD || 'govcon',
+    password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'govcon',
+    ssl,
   },
   migrations: {
     directory: path.resolve(__dirname, 'migrations'),

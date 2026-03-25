@@ -6,6 +6,7 @@ export interface KnexConnectionOptions {
   user: string;
   password: string;
   database: string;
+  ssl?: { rejectUnauthorized: boolean } | false;
 }
 
 export function createKnexInstance(options: KnexConnectionOptions): Knex {
@@ -17,6 +18,7 @@ export function createKnexInstance(options: KnexConnectionOptions): Knex {
       user: options.user,
       password: options.password,
       database: options.database,
+      ssl: options.ssl,
     },
     pool: {
       min: 2,

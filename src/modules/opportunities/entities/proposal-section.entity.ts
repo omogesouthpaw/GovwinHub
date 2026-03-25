@@ -1,4 +1,4 @@
-import { BaseEntity } from 'src/common/entities/base.entity';
+import { BaseEntity } from '../../../common/entities/base.entity';
 
 export interface ProposalSectionEntity extends BaseEntity {
   proposalId: string;

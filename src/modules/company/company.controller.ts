@@ -5,11 +5,11 @@ import {
 import { CacheInterceptor, CacheTTL, CacheKey } from '@nestjs/cache-manager';
 import { CompanyService } from './company.service';
 import { UpdateCompanyDto } from './dto';
-import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/modules/auth/guards/roles.guard';
-import { CurrentUser } from 'src/modules/auth/decorators/current-user.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { IUser } from '../user/interfaces/user.interface';
-import { Roles } from 'src/modules/auth/decorators/roles.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
 import { UserRole } from '../user/entities/user.entity';
 import { CreateCompanyDto } from './dto/company.dto';
 

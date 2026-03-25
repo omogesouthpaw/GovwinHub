@@ -13,7 +13,7 @@ export interface SavedOpportunityEntity extends BaseEntity {
  * Columns:
  *  - id              VARCHAR(36)   PK
  *  - user_id         VARCHAR(36)   NOT NULL  FK -> users.id
- *  - company_id      VARCHAR(36)   NOT NULL  FK -> Companys.id
+ *  - company_id      VARCHAR(36)   NOT NULL  FK -> organizations.id
  *  - opportunity_id  VARCHAR(36)   NOT NULL  FK -> opportunities.id
  *  - notes           VARCHAR(500)  NULL
  *  + base columns (created_at, updated_at, deleted_at, expired_at)
@@ -24,6 +24,6 @@ export interface SavedOpportunityEntity extends BaseEntity {
  *
  * Foreign Keys:
  *  - user_id        -> users.id
- *  - company_id     -> Companys.id
+ *  - company_id     -> organizations.id
  *  - opportunity_id -> opportunities.id
  */

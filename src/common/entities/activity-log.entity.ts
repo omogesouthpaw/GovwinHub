@@ -14,7 +14,7 @@ export interface ActivityLogEntity extends BaseEntity {
  *
  * Columns:
  *  - id          VARCHAR(36)   PK
- *  - org_id      VARCHAR(36)   NOT NULL  FK -> Companys.id
+ *  - org_id      VARCHAR(36)   NOT NULL  FK -> organizations.id
  *  - user_id     VARCHAR(36)   NOT NULL  FK -> users.id
  *  - entity_type VARCHAR(50)   NOT NULL
  *  - entity_id   VARCHAR(36)   NOT NULL
@@ -26,6 +26,6 @@ export interface ActivityLogEntity extends BaseEntity {
  *  - INDEX (entity_type, entity_id)
  *
  * Foreign Keys:
- *  - org_id  -> Companys.id
+ *  - org_id  -> organizations.id
  *  - user_id -> users.id
  */

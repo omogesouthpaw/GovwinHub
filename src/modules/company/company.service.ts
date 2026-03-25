@@ -8,12 +8,11 @@ import { CreateOrganizationDto, IOrganization, UpdateOrganizationDto } from './i
 // import { KNEX_CONNECTION } from '../database';
 // import { BaseRepository, mapToCamelCase } from '../database/base.repository';
 import { CreateCompanyDto, UpdateCompanyDto } from './dto/company.dto';
-import { ICompany } from 'src/common/interfaces/company.interface';
-// import { ICompany } from 'src/interfaces';
+import { ICompany } from '../../common/interfaces/company.interface';
 
 @Injectable()
 export class CompanyService extends BaseRepository<ICompany> {
-  protected readonly tableName = 'Companies';
+  protected readonly tableName = 'organizations';
 
   constructor(@Inject(KNEX_CONNECTION) knex: Knex) {
     super(knex);

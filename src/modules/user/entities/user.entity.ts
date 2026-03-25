@@ -26,7 +26,7 @@ export interface UserEntity extends BaseEntity {
  *
  * Columns:
  *  - id                 VARCHAR(36)                                PK
- *  - org_id             VARCHAR(36)                                NULL      FK -> Companys.id
+ *  - org_id             VARCHAR(36)                                NULL      FK -> organizations.id
  *  - email              VARCHAR(255)                               NOT NULL  UNIQUE
  *  - password           VARCHAR(255)                               NOT NULL
  *  - first_name         VARCHAR(255)                               NULL
@@ -43,5 +43,5 @@ export interface UserEntity extends BaseEntity {
  *  - UNIQUE (email)
  *
  * Foreign Keys:
- *  - org_id -> Companys.id
+ *  - org_id -> organizations.id
  */
