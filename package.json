@@ -18,8 +18,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migrate": "knex migrate:latest --knexfile src/database/knexfile.ts",
-    "migrate:rollback": "knex migrate:rollback --knexfile src/database/knexfile.ts",
-    "postinstall": "chmod +x node_modules/.bin/tsc node_modules/.bin/nest node_modules/.bin/ts-node node_modules/.bin/knex"
+    "migrate:rollback": "knex migrate:rollback --knexfile src/database/knexfile.ts"
   },
   "dependencies": {
     "@nestjs/cache-manager": "^3.1.0",
