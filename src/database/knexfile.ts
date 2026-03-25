@@ -2,7 +2,9 @@ import * as dotenv from 'dotenv';
 import * as path from 'path';
 
 const env = process.env.NODE_ENV || 'development';
-dotenv.config({ path: path.resolve(__dirname, `../../.env.${env}`) });
+if (env !== 'production') {
+  dotenv.config({ path: path.resolve(__dirname, `../../.env.${env}`) });
+}
 
 const ssl = process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false;
 
